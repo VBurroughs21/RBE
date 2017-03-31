@@ -1,0 +1,25 @@
+<a href="/songs">Dashboard</a>
+<a href="/logout">Logout</a>
+
+<h2><%= @song.artist %> - <%= @song.title %></h2>
+
+<% if @lists && @lists.length > 0 %>
+    <p>Users that have added this song:</p>
+
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Times Added</th>
+        </thead>
+        <tbody>
+            <% @lists.each do |record| %>
+                <tr>
+                    <td> <a href="/users/<%= record.user.id %>"> <%= record.user.first_name %> <%= record.user.last_name %></a></td>
+                    <td><%= record.times_add %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% else %>
+    <p>No one has added this song.</p>
+<% end %>
